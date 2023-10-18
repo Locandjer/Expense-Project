@@ -1,25 +1,53 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/newExpense/NewExpense';
 
-function App() {
+const DUMMY_EXPENSES = [
+  {
+    id: 'e1',
+    title: 'Toilet Paper',
+    amount: 5,
+    date: new Date(2023, 6, 20)
+  },
+  {
+    id: 'e2',
+    title: 'Carne cruda',
+    amount: 8,
+    date: new Date(2023, 5, 18)
+  },
+  {
+    id: 'e3',
+    title: 'tacchini',
+    amount: 13,
+    date: new Date(2023, 4, 15)
+  },
+  {
+    id: 'e4',
+    title: 'bazookas',
+    amount: 21,
+    date: new Date(2023, 3, 11)
+  }
+]
+
+const App = () => {
+
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+//chiedere a greg da dove viene prevExpenses tra le tonde
+  const addExpenseHandler = expense => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NewExpense onAddExpense={addExpenseHandler}/>
+      <Expenses items={expenses}/>
     </div>
   );
 }
+
+
 
 export default App;
