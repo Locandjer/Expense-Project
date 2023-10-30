@@ -12,19 +12,19 @@ const DUMMY_EXPENSES = [
   },
   {
     id: 'e2',
-    title: 'Carne cruda',
+    title: 'Raw ham',
     amount: 8,
     date: new Date(2023, 5, 18)
   },
   {
     id: 'e3',
-    title: 'tacchini',
+    title: 'Turkey',
     amount: 13,
     date: new Date(2023, 4, 15)
   },
   {
     id: 'e4',
-    title: 'bazookas',
+    title: 'Chicken Little',
     amount: 21,
     date: new Date(2023, 3, 11)
   }

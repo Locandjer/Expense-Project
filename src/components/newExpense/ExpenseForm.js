@@ -5,7 +5,7 @@ import './expenseForm.css';
 const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
-    const [enteredDate, setEnteredDate] = useState(insertCurrentDate);
+    const [enteredDate, setEnteredDate] = useState('');
 
     const titleChangeHandler = (event) => {
         console.log(event)
@@ -32,7 +32,7 @@ const ExpenseForm = (props) => {
         props.onSaveExpenseData(expenseData);
         setEnteredTitle('');
         setEnteredAmount('');
-        setEnteredDate(insertCurrentDate);
+        setEnteredDate('');
 
         
 
@@ -42,38 +42,17 @@ const ExpenseForm = (props) => {
         const today = new Date();
         const year = today.getFullYear();
         const month = (today.getMonth()+1).toString().padStart(2, '0'); 
-        const day = (today.getDate()+1).toString().padStart(2, '0');  
-        
-        console.log(day);
-        if (typeof day === "string") {
-            console.log("La variabile è di tipo string.");
-          } else if (typeof day === "number") {
-            console.log("La variabile è di tipo number.");
-          } else {
-            console.log("La variabile non è di tipo string né number.");
-          }
-       
-          console.log('cc: ',day)
+        const day = (today.getDate()+1).toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
     }
 
-    function insertCurrentDate() {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = (today.getMonth()+1).toString().padStart(2, '0');  
-        const day = today.getDate().toString().padStart(2, '0');  
-        const day1 = today.getDate();
-        
-        console.log(day1);
-        if (typeof day1 === "string") {
-            console.log("La variabile è di tipo string.");
-          } else if (typeof day1 === "number") {
-            console.log("La variabile è di tipo number.");
-          } else {
-            console.log("La variabile non è di tipo string né number.");
-          }
-        return `${year}-${month}-${day}`;
-    }
+    // function insertCurrentDate() {
+    //     const today = new Date();
+    //     const year = today.getFullYear();
+    //     const month = (today.getMonth()+1).toString().padStart(2, '0');  
+    //     const day = today.getDate().toString().padStart(2, '0');
+    //     return `${year}-${month}-${day}`;
+    // }
 
 
     return (
@@ -89,7 +68,7 @@ const ExpenseForm = (props) => {
                 </div>
                 <div className='new-expense__control'>
                     <label>Date</label>
-                    <input type='date' min="2000-01-01" max={getCurrentDate()}  value={enteredDate || insertCurrentDate()} onChange={dateChangeHandler} />
+                    <input type='date' min="2000-01-01" max={getCurrentDate()}  value={enteredDate} onChange={dateChangeHandler} />
                 </div>
             </div>
             <div className='new-expense__actions'>
